@@ -1,15 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:logging/logging.dart';
 
 import 'ui/main_screen.dart';
 
 Future<void> main() async {
-  // TODO: Call _setupLogging()
+  _setupLogging();
   WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
-// TODO: Add _setupLogging()
+void _setupLogging(){
+  Logger.root.level = Level.ALL;
+  // try changing ALL to WARNING, SEVERE...
+  Logger.root.onRecord.listen((rec) {
+    print('${rec.level.name}: ${rec.time}: ${rec.message}');
+  });
+}
 
 class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
