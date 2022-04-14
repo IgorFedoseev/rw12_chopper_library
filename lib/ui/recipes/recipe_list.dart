@@ -37,13 +37,11 @@ class _RecipeListState extends State<RecipeList> {
   void initState() {
     super.initState();
     getPreviousSearches();
-
     searchTextController = TextEditingController(text: '');
     _scrollController
       ..addListener(() {
         final triggerFetchMoreSize =
             0.7 * _scrollController.position.maxScrollExtent;
-
         if (_scrollController.position.pixels > triggerFetchMoreSize) {
           if (hasMore &&
               currentEndPosition < currentCount &&
@@ -214,7 +212,6 @@ class _RecipeListState extends State<RecipeList> {
               ),
             );
           }
-
           loading = false;
           // TODO: change with new snapshot
           final query = snapshot.data;
