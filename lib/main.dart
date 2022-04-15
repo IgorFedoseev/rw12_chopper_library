@@ -10,6 +10,7 @@ Future<void> main() async {
   runApp(const MyApp());
 }
 
+// 7) add method for logging requests and responses
 void _setupLogging(){
   Logger.root.level = Level.ALL;
   // try changing ALL to WARNING, SEVERE...

@@ -190,8 +190,9 @@ class _RecipeListState extends State<RecipeList> {
     if (searchTextController.text.length < 3) {
       return Container();
     }
+    // 8) add generics
     return FutureBuilder<Response<Result<APIRecipeQuery>>>(
-      // changed with new RecipeService
+      // 9) change with new instance of service class
       future: RecipeService.create().queryRecipes(
         searchTextController.text.trim(),
         currentStartPosition,
@@ -209,7 +210,7 @@ class _RecipeListState extends State<RecipeList> {
             );
           }
           loading = false;
-          //changed with new snapshot
+          // 10) change with new snapshot
           final result = snapshot.data?.body;
           if(result is Error){
             // Hit an error
