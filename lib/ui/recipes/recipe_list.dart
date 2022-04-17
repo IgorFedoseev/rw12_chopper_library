@@ -81,7 +81,7 @@ class _RecipeListState extends State<RecipeList> {
         previousSearches = <String>[];
       }
     }
-  }
+  }// delete it later
 
   @override
   Widget build(BuildContext context) {
