@@ -2,7 +2,9 @@ import 'dart:math';
 
 import 'package:chopper/chopper.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 import '../../data/models/recipe.dart';
+import '../../mock_service/mock_service.dart';
 import '../../network/model_response.dart';
 import '../widgets/custom_dropdown.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -194,7 +196,9 @@ class _RecipeListState extends State<RecipeList> {
     // 8) add generics
     return FutureBuilder<Response<Result<APIRecipeQuery>>>(
       // 9) change with new instance of service class
-      future: RecipeService.create().queryRecipes(
+      // Provider.of<MockService>(context) for mop
+      // RecipeService.create() for upload from network
+      future: Provider.of<MockService>(context).queryRecipes(
         searchTextController.text.trim(),
         currentStartPosition,
         currentEndPosition,
